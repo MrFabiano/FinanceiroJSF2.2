@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Nova Pessoa</title>
+
+         <h:outputStylesheet library="css" name="sistema.css"/>
+         <h:outputStylesheet library="css" name="consulta-lancamentos.css"/>
+</h:head>
+<h:body>
+                 <h1>Nova Pessoa</h1>
+         
+
+		<h:form id="frm">
+		
+			<h:button value="Novo" outcome="NovaPessoa"/>
+			<h:button value="Consulta" outcome="ConsultaPessoa"/>
+			
+			<h:panelGrid columns="2" styleClass="form-grid"
+					columnClasses="label, campo">
+					
+				<h:outputLabel value="Nome"/>
+				<h:inputText size="50" value="#{cadastroPessoaBean.novas.nome}" required="true" label="Nome"/>  
+			
+				<h:outputLabel value="Tipo"/>
+				<h:selectOneRadio value="#{cadastroPessoaBean.novas.tipo}" required="true" label="Tipo">
+				<f:selectItems value="#{cadastroPessoaBean.tiposPessoas}" var="tipoPessoa" itemValue="#{tipoPessoa}"
+				itemLabel="#{tipoPessoa.nome}"/>
+			    </h:selectOneRadio>
+				
+				
+				
+				<h:outputLabel value="Email"/>
+				<h:inputText size="35" value="#{cadastroPessoaBean.novas.email}" required="true" label="Email"/>  
+				
+				<h:outputLabel value="Data de Nascimento"/>
+				<h:inputText size="18"/>
+				
+				
+			    <h:outputLabel value="Ramo de Atividade"/>
+				<h:selectOneMenu value="#{cadastroPessoaBean.novas.ramoAtividade}" required="true" label="Ramo de Atividade">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+					<f:selectItems value="#{cadastroPessoaBean.ramosAtividades}" var="ramoAtividade" 
+					itemValue="#{ramoAtividade}" itemLabel="#{ramoAtividade.descricao}"/> 
+				</h:selectOneMenu>
+			
+				
+				<h:outputLabel/>
+				<h:commandButton value="Cadastrar" action="#{cadastroPessoaBean.cadastrar}"/>
+			</h:panelGrid>
+			
+		</h:form>
+	</h:body>
+</html>
